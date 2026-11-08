@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#212A31">
+<meta name="description" content="Surajit Dandapat — jewellery CAD designer and 3D artist. Precision jewellery modelling, production-ready CAD and photorealistic renders.">
+<title>Suraj CAD Designs — Jewellery CAD & 3D Art</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<style>
+:root{
+ --ink:#212A31; --slate:#2E3944; --teal:#124E66; --mist:#748D92; --paper:#D3D9D4;
+ --white:#F5F7F4; --muted:#AAB8B7; --line:rgba(211,217,212,.16);
+ --display:"Manrope",sans-serif; --body:"DM Sans",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:var(--ink);color:var(--white);font-family:var(--body);line-height:1.65}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit}
+.wrap{width:min(1160px,calc(100% - 48px));margin:auto}
+.nav{position:fixed;z-index:20;top:0;left:0;right:0;background:rgba(33,42,49,.86);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav-inner{height:76px;display:flex;align-items:center;justify-content:space-between}
+.brand{font:800 15px var(--display);letter-spacing:.14em;text-transform:uppercase}
+.brand span{color:var(--mist)}
+.nav-links{display:flex;gap:30px;align-items:center;color:#C4CECA;font-size:13px}
+.nav-links a:hover{color:white}
+.nav-cta,.button{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:12px 18px;border:1px solid rgba(211,217,212,.45);border-radius:3px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;transition:.2s}
+.nav-cta:hover,.button:hover{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.menu-btn{display:none;background:none;border:0;color:white;font-size:24px}
+.hero{min-height:760px;padding:150px 0 90px;display:flex;align-items:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 78% 34%,rgba(18,78,102,.55),transparent 37%),linear-gradient(120deg,#212A31 5%,#2E3944 60%,#124E66 130%)}
+.hero:after{content:"";position:absolute;width:520px;height:520px;border:1px solid rgba(211,217,212,.14);border-radius:50%;right:-95px;top:95px;box-shadow:0 0 0 45px rgba(211,217,212,.025),0 0 0 90px rgba(211,217,212,.02)}
+.hero:before{content:"";position:absolute;z-index:0;right:0;top:76px;width:53%;height:calc(100% - 76px);background-image:linear-gradient(90deg,#212A31 0%,rgba(33,42,49,.12) 36%,rgba(18,78,102,.06) 100%),url("images/bg.jpg");background-size:cover;background-position:center;background-repeat:no-repeat;opacity:.88;mask-image:linear-gradient(90deg,transparent 0%,#000 20%);}
+.hero-content{position:relative;z-index:2;max-width:850px}
+.eyebrow{display:flex;align-items:center;gap:12px;color:var(--mist);font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase}
+.eyebrow:before{content:"";width:34px;height:1px;background:var(--mist)}
+h1,h2,h3,p{margin-top:0}
+h1{font:500 clamp(48px,8.3vw,104px)/.99 var(--display);letter-spacing:-.075em;margin:28px 0}
+h1 em{font-style:normal;color:var(--paper)}
+.hero p{max-width:560px;color:#C2CCCA;font-size:17px;line-height:1.8}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+.button.primary{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.button.primary:hover{background:white}
+.hero-note{margin-top:70px;color:#9EAEAD;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+.hero-note span{color:var(--paper);margin:0 12px}
+section{padding:112px 0}
+.section-head{display:flex;justify-content:space-between;gap:35px;align-items:end;margin-bottom:52px}
+.kicker{font-size:11px;color:var(--mist);letter-spacing:.2em;text-transform:uppercase;font-weight:700}
+h2{font:600 clamp(34px,5vw,58px)/1.1 var(--display);letter-spacing:-.055em;margin:12px 0 0}
+.section-intro{max-width:390px;color:#AEBBBA;font-size:14px;margin:0}
+.about{background:var(--paper);color:var(--ink)}
+.about .kicker{color:var(--teal)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:start}
+.about-copy{font-size:18px;line-height:1.85;color:#3D4A4D}
+.about-copy strong{color:var(--teal)}
+.about-meta{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(33,42,49,.2);margin-top:32px}
+.meta-item{padding:18px 0;border-bottom:1px solid rgba(33,42,49,.2)}
+.meta-item small{display:block;color:#647779;text-transform:uppercase;letter-spacing:.13em;font-size:10px;margin-bottom:5px}
+.meta-item b{font:600 14px var(--display)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.service{background:var(--ink);padding:32px 28px;min-height:230px}
+.service-num{color:var(--mist);font-size:11px;letter-spacing:.15em}
+.service h3{font:600 20px var(--display);margin:32px 0 12px}
+.service p{color:#AEBBBA;font-size:13px;margin:0}
+.portfolio{background:#26323A}
+.portfolio-top{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:30px}
+.portfolio-top p{color:#AEBBBA;font-size:13px;margin:0}
+.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.project-card{background:#2E3944;border:1px solid rgba(211,217,212,.12);min-width:0}\n.project-grid:empty{display:none}
+.project-visual{height:250px;display:none;place-items:center;position:relative;overflow:hidden;background:linear-gradient(145deg,#35434B,#1C2A32)}
+.project-visual:before{content:"";position:absolute;width:155px;height:155px;border:1px solid rgba(211,217,212,.24);border-radius:50%;box-shadow:0 0 0 22px rgba(211,217,212,.035),0 0 0 45px rgba(211,217,212,.025)}
+.project-visual .placeholder{z-index:1;text-align:center;color:#AAB8B7;font-size:10px;letter-spacing:.18em;text-transform:uppercase}
+.project-visual img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.project-card-body{padding:20px}
+.project-card h3{font:600 17px var(--display);margin:0 0 5px}
+.project-card p{font-size:12px;color:#AEBBBA;margin:0}
+.project-tag{display:inline-block;margin-top:14px;color:#C6D0CC;border:1px solid rgba(211,217,212,.2);padding:4px 8px;font-size:9px;letter-spacing:.12em;text-transform:uppercase}
+.model-panel{margin-top:20px;border:1px solid var(--line);background:#1B252C;padding:14px}
+.model-panel[hidden]{display:none}
+model-viewer{width:100%;height:430px;background:radial-gradient(ellipse,#354650,#1B252C);--poster-color:transparent;border:1px solid rgba(211,217,212,.12)}
+.model-controls{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:12px}.model-controls .button{background:transparent;color:var(--white)}.model-caption{font-size:11px;color:#AAB8B7;margin:0}
+.model-caption{font-size:11px;color:#AAB8B7;margin:10px 2px 0}
+.skills{display:grid;grid-template-columns:1fr 1fr;gap:80px}
+.skill-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.skill{border:1px solid var(--line);padding:10px 14px;color:#CFD7D3;font-size:12px}
+.software-list{list-style:none;padding:0;margin:0}
+.software-list li{padding:17px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;font:500 15px var(--display)}
+.software-list span{color:var(--mist);font:11px var(--body);text-transform:uppercase;letter-spacing:.1em}
+.process{background:var(--teal)}
+.process .kicker{color:#B8CFCA}
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;margin-top:50px}
+.process-step{border-top:1px solid rgba(245,247,244,.35);padding-top:18px}
+.process-step small{color:#B8CFCA;font-size:11px;letter-spacing:.15em}
+.process-step h3{font:600 18px var(--display);margin:18px 0 8px}
+.process-step p{color:#D0DDDA;font-size:12px;margin:0}
+.contact{background:var(--paper);color:var(--ink)}
+.contact .kicker{color:var(--teal)}
+.contact-row{display:flex;align-items:end;justify-content:space-between;gap:35px}
+.contact h2{max-width:680px}
+.contact p{color:#596A6D;max-width:370px;font-size:14px}
+.contact-actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap}.contact .button{background:var(--ink);color:white;border-color:var(--ink);white-space:nowrap}.contact-phone{font:700 14px var(--display);white-space:nowrap}.contact-linkedin{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.contact .button:hover{background:var(--teal);border-color:var(--teal)}
+footer{padding:26px 0;background:#1B242A;color:#91A19F;font-size:11px}
+.footer-row{display:flex;justify-content:space-between;gap:20px}
+@media(max-width:800px){
+ .nav-links{display:none;position:absolute;top:76px;left:0;right:0;padding:20px 24px;background:#212A31;flex-direction:column;align-items:flex-start;border-bottom:1px solid var(--line)}
+ .nav-links.open{display:flex}.menu-btn{display:block}.nav-cta{display:none}
+ .hero{min-height:700px}.hero:before{width:58%;opacity:.38;mask-image:linear-gradient(90deg,transparent 0%,#000 45%)}.section-head,.contact-row{display:block}.section-intro{margin-top:20px}
+ .about-grid,.skills{grid-template-columns:1fr;gap:35px}
+ .services-grid{grid-template-columns:1fr 1fr}.project-grid{grid-template-columns:1fr 1fr}
+ .process-grid{grid-template-columns:1fr 1fr}
+ .contact-actions{margin-top:20px}.contact .button{margin-top:0}
+}
+@media(max-width:520px){
+ .wrap{width:min(100% - 34px,1160px)}section{padding:78px 0}
+ .hero{padding:130px 0 70px;min-height:670px}.hero:before{width:100%;height:48%;top:auto;bottom:0;opacity:.28;mask-image:linear-gradient(180deg,transparent 0%,#000 35%)}h1{font-size:clamp(46px,14vw,68px)}
+ .hero p{font-size:15px}.hero-note{margin-top:50px;font-size:9px}
+ .services-grid,.project-grid,.process-grid{grid-template-columns:1fr}
+ .service{min-height:190px}.project-visual{height:230px}
+ .portfolio-top{align-items:flex-start;flex-direction:column}
+ .about-meta{grid-template-columns:1fr 1fr}
+ .footer-row{flex-direction:column}
+}
+</style>
+</head>
+<body>
+<header class="nav">
+ <div class="wrap nav-inner">
+  <a class="brand" href="#home">Suraj <span>CAD Designs</span></a>
+  <nav class="nav-links" id="navLinks">
+   <a href="#about">About</a><a href="#services">Services</a><a href="#portfolio">Portfolio</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
+  </nav>
+  <a class="nav-cta" href="#contact">Let’s work together ↗</a>
+  <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation">☰</button>
+ </div>
+</header>
+<main>
+<section class="hero" id="home">
+ <div class="wrap hero-content">
+  <div class="eyebrow">Jewellery CAD Designer · 3D Artist</div>
+  <h1>Crafting brilliance.<br><em>One detail at a time.</em></h1>
+  <p>I’m Surajit Dandapat — a jewellery CAD designer focused on precise 3D models, considered detailing and production-ready designs that bring ideas to life.</p>
+  <div class="hero-actions">
+   <a class="button primary" href="#portfolio">Explore my work ↘</a>
+   <a class="button" href="https://www.linkedin.com/in/surajitdandapat" target="_blank" rel="noopener">Connect on LinkedIn ↗</a>
+  </div>
+  <div class="hero-note">Rhino 3D <span>•</span> MatrixGold <span>•</span> Jewellery Modelling <span>•</span> 3D Rendering</div>
+ </div>
+</section>
+
+<section class="about" id="about">
+ <div class="wrap">
+  <div class="section-head"><div><div class="kicker">01 / About</div><h2>Craft meets<br>technical precision.</h2></div>
+   <p class="section-intro">A design-minded approach to jewellery CAD — balancing visual appeal, accurate geometry and real-world manufacturing needs.</p>
+  </div>
+  <div class="about-grid">
+   <div class="about-copy">I’m <strong>Surajit Dandapat</strong>, the designer behind <strong>Suraj CAD Designs</strong>. Since 2023, I’ve been working across jewellery CAD design, 3D modelling and rendering. I enjoy translating a concept into a clean, detailed model that is ready for the next stage of production.</div>
+   <div>
+    <div class="about-meta">
+     <div class="meta-item"><small>Based in</small><b>India</b></div>
+     <div class="meta-item"><small>Speciality</small><b>Jewellery CAD & 3D</b></div>
+     <div class="meta-item"><small>Experience</small><b>Working since 2023</b></div>
+     <div class="meta-item"><small>Availability</small><b>Freelance / Collaboration</b></div>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="services">
+ <div class="wrap">
+  <div class="section-head"><div><div class="kicker">02 / What I do</div><h2>From concept<br>to production.</h2></div>
+   <p class="section-intro">Focused services for jewellery brands, manufacturers, dealers and independent designers.</p>
+  </div>
+  <div class="services-grid">
+   <article class="service"><div class="service-num">01 — CAD DESIGN</div><h3>Jewellery CAD Modelling</h3><p>Detailed 3D construction for rings, pendants, earrings, bangles, maang tikka and coordinated sets.</p></article>
+   <article class="service"><div class="service-num">02 — VISUALISATION</div><h3>3D Rendering</h3><p>Clear product visualisation with attention to form, gemstone placement, metal finish and presentation.</p></article>
+   <article class="service"><div class="service-num">03 — PRODUCTION</div><h3>Manufacturing Support</h3><p>Production-oriented models and deliverables, including STL files and practical design refinements.</p></article>
+  </div>
+ </div>
+</section>
+
+<section class="portfolio" id="portfolio">
+ <div class="wrap">
+  <div class="section-head"><div><div class="kicker">03 / Selected work</div><h2>Portfolio in progress.</h2></div>
+   <p class="section-intro">A space for finished designs, renders and 3D models. Add your own project images or GLB files to preview them here.</p>
+  </div>
+  <div class="portfolio-top">
+   <p>Selected jewellery CAD designs, renders and 3D work.</p>
+  </div>
+  <div class="project-grid" id="projectGrid" aria-live="polite"></div>
+  <div class="model-panel" id="modelPanel" hidden aria-hidden="true">
+   <div class="portfolio-top" style="margin-bottom:12px"><p><strong>Interactive 3D preview</strong> · Explore this jewellery design in 360°</p></div>
+   <model-viewer id="modelViewer" camera-controls auto-rotate rotation-per-second="24deg" shadow-intensity="1" exposure="1" environment-image="neutral" interaction-prompt="auto" alt="Interactive jewellery 3D model preview"></model-viewer>
+   <p class="model-caption">Drag to rotate · Scroll or pinch to zoom · Auto-rotation enabled.</p>
+  </div>
+ </div>
+</section>
+
+<section id="skills">
+ <div class="wrap">
+  <div class="section-head"><div><div class="kicker">04 / Capabilities</div><h2>Tools, skills<br>& craft.</h2></div>
+   <p class="section-intro">A practical combination of modelling software, design judgement and production awareness.</p>
+  </div>
+  <div class="skills">
+   <div><div class="kicker">Core skills</div><div class="skill-list">
+    <span class="skill">Precision Modelling</span><span class="skill">Gemstone Setting</span><span class="skill">Metallurgy Awareness</span><span class="skill">Jewellery Detailing</span><span class="skill">Client Communication</span><span class="skill">Production Support</span><span class="skill">STL Preparation</span><span class="skill">3D Visualisation</span>
+   </div></div>
+   <div><div class="kicker">Software toolkit</div><ul class="software-list">
+    <li>Rhinoceros 3D <span>CAD</span></li><li>Matrix / MatrixGold <span>Jewellery CAD</span></li><li>KeyShot <span>Rendering</span></li><li>ZBrush 2024 <span>Digital sculpting</span></li><li>Magics 20.03 <span>Mesh preparation</span></li>
+   </ul></div>
+  </div>
+ </div>
+</section>
+
+<section class="process">
+ <div class="wrap">
+  <div class="kicker">05 / Workflow</div><h2>A clear path from<br>brief to finished file.</h2>
+  <div class="process-grid">
+   <div class="process-step"><small>STEP 01</small><h3>Understand</h3><p>Review the concept, references, dimensions and intended use.</p></div>
+   <div class="process-step"><small>STEP 02</small><h3>Build</h3><p>Create accurate geometry and thoughtful jewellery details.</p></div>
+   <div class="process-step"><small>STEP 03</small><h3>Refine</h3><p>Review proportions, settings and design details together.</p></div>
+   <div class="process-step"><small>STEP 04</small><h3>Deliver</h3><p>Prepare agreed 3D files, renders and production-ready outputs.</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="contact" id="contact">
+ <div class="wrap">
+  <div class="kicker">06 / Get in touch</div>
+  <div class="contact-row"><div><h2>Have a design in mind?</h2><p>Let’s discuss your next jewellery design, CAD project or production requirement. I’m open to freelance work and creative collaborations.</p></div>
+   <div class="contact-actions">
+    <a class="button" href="https://wa.me/917797789336" target="_blank" rel="noopener">WhatsApp me ↗</a>
+    <a class="contact-phone" href="tel:+917797789336">+91 7797789336</a>
+    <a class="contact-linkedin" href="https://www.linkedin.com/in/surajitdandapat" target="_blank" rel="noopener">LinkedIn ↗</a>
+   </div>
+  </div>
+ </div>
+</section>
+</main>
+<footer><div class="wrap footer-row"><span>© <span id="year"></span> Suraj CAD Designs</span><span>Jewellery CAD · 3D Modelling · Visualisation</span><a href="#home">Back to top ↑</a></div></footer>
+<script>
+document.getElementById('year').textContent=new Date().getFullYear();
+
+const menuBtn=document.getElementById('menuBtn');
+const nav=document.getElementById('navLinks');
+menuBtn.addEventListener('click',()=>nav.classList.toggle('open'));
+nav.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>nav.classList.remove('open')));
+
+/*
+  PROJECT GALLERY — ADMIN / DEVELOPER ONLY
+  Put project image files in your site folder, then add their paths below.
+  Example:
+    { title: "Diamond Ring", description: "Halo setting with pavé details",
+      category: "CAD Modelling", image: "assets/projects/diamond-ring.jpg" }
+
+  Leave PROJECTS empty to keep the project visual area hidden.
+  Visitors see only the finished project cards; there is no upload control.
+*/
+const PROJECTS = [
+   { title: "Diamond Ring", description: "Halo setting with pavé details", category: "CAD Modelling", image: "images/diamond-ring.jpg" },
+   { title: "Gold Earrings", description: "Intricate filigree design", category: "3D Rendering", image: "images/gold-earrings.jpg" },
+  { title: "Pendant Design", description: "Gemstone pendant concept", category: "3D Rendering", image: "images/pendant-design.jpg" },
+  
+];
+
+const projectGrid = document.getElementById('projectGrid');
+
+PROJECTS.filter(project => project.image && project.image.trim()).forEach(project => {
+  const card = document.createElement('article');
+  card.className = 'project-card';
+
+  const visual = document.createElement('div');
+  visual.className = 'project-visual';
+  visual.style.display = 'block';
+
+  const image = document.createElement('img');
+  image.src = project.image.trim();
+  image.alt = project.title || 'Jewellery CAD project';
+  image.loading = 'lazy';
+  visual.appendChild(image);
+
+  const body = document.createElement('div');
+  body.className = 'project-card-body';
+
+  const title = document.createElement('h3');
+  title.textContent = project.title || 'Jewellery Design';
+
+  const description = document.createElement('p');
+  description.textContent = project.description || '';
+
+  body.append(title, description);
+
+  if (project.category) {
+    const tag = document.createElement('span');
+    tag.className = 'project-tag';
+    tag.textContent = project.category;
+    body.appendChild(tag);
+  }
+
+  card.append(visual, body);
+  projectGrid.appendChild(card);
+});
+
+
+/*
+  ADMIN / DEVELOPER SETTINGS
+  1. Upload your .glb or .gltf model into the website project, for example:
+       models/diamond-ring.glb
+  2. Set MODEL_SRC below to that file path.
+  3. Leave it as an empty string to keep the 3D viewer completely hidden.
+
+  Visitors cannot upload files. They only see the model viewer when a model
+  has been configured here. Auto-rotation starts automatically.
+*/
+const MODEL_SRC = "models/21.glb"; // Example: "models/diamond-ring.glb"
+
+const modelPanel=document.getElementById('modelPanel');
+const modelViewer=document.getElementById('modelViewer');
+
+if (MODEL_SRC.trim()) {
+  modelViewer.src = MODEL_SRC.trim();
+  modelPanel.hidden = false;
+  modelPanel.setAttribute('aria-hidden','false');
+  modelViewer.setAttribute('auto-rotate','');
+  modelViewer.setAttribute('camera-controls','');
+}
+</script>
+</body>
+</html>
